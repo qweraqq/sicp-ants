@@ -56,3 +56,31 @@ python ants_grader.py -q A5
 ```
 - If you would like to learn more about Python's built-in unit testing framework, read the documentation of the unittest module. Most problems have associated tests. Make sure that the tests for each problem pass before moving on.
 
+## Phase 1
+### Problem 1 (0 pts)
+Answer the following questions with your partner after you have read the entire ants.py file. If you cannot answer these questions, read the file again.
+- Which method in which class runs a game? (the answer is not run, because run is not a method)!
+- The Hive, a subclass of Place, is the starting location of the bees. Unlike most instances of Place, the Hive class does not have an exit. Explain how and when Bees leave the Hive.
+- Explain the mechanism in the code by which the places in the colony are laid out. How do you modify the code to produce more places?
+- What is the significance of an Insect's armor attribute? What happens when armor reaches 0?
+
+### Problem 2 (2 pts)
+Add food costs and implement harvesters. 
+- Currently, there is no cost for deploying any type of Ant, and so there is no challenge to the game. 
+- You'll notice that Ant starts out with a base `food_cost` of 0. Override this value in each of the subclasses listed below with the correct costs.
+
+| Class        | Food | Armor |
+|--------------|------|-------|
+| HarvesterAnt |   2  |   1   |
+|  ThrowerAnt  |   4  |   1   |
+
+- Now there's no way to gather more food! To fix this issue, implement the `HarvesterAnt` class. A `HarvesterAnt` is a type of Ant that adds one food to the `colony.food` total as its action.
+- Try playing the game again. Once you have placed a HarvesterAnt, you should accumulate food each turn. Vanquishing the bees using the default game setup is now possible.
+
+### Problem 3 (1 pts)
+Add code to the `Place` constructor that tracks entrances. 
+- Right now, a `Place` keeps track only of its exit. 
+- We would like a `Place` to keep track of its entrance as well. A `Place` needs to track only one entrance.
+- However, simply passing an entrance to a `Place` constructor will be problematic; we will need to have both the exit and the entrance before we can create a `Place`! (It's a chicken or the egg problem.) To get around this problem, we will keep track of entrances in the following way instead. The Place constructor should specify that:
+    - A newly created `Place` always starts with its entrance as None.
+    - If the `Place` has an exit, then the exit's entrance is set to that `Place`.
